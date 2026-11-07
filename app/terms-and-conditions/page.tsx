@@ -1,0 +1,3 @@
+import { InfoPage } from '../../components/page-templates'
+export const metadata = { title: 'Terms and Conditions | Shree Balaji Enterprises', description: 'Terms and conditions for using the Shree Balaji Enterprises website.' }
+export default function Page(){return <InfoPage eyebrow="Legal" title="Terms and conditions" text="A simple guide to using this website and making an enquiry."><p>Information on this website is provided for general guidance and enquiry purposes. Service availability, pricing, routes and timelines are confirmed only after discussing the specific requirement with our team.</p><p>By submitting an enquiry, you confirm that the information shared is accurate to the best of your knowledge.</p></InfoPage>}
