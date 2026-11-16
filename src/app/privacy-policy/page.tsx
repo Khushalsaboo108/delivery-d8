@@ -1,0 +1,3 @@
+import { InfoPage } from '../../components/page-templates'
+export const metadata = { title: 'Privacy Policy | Shree Balaji Enterprises', description: 'Privacy policy for Shree Balaji Enterprises.' }
+export default function Page() { return <InfoPage eyebrow="Legal" title="Privacy policy" text="How we handle information shared through this website."><p>This website is intended to help customers contact Shree Balaji Enterprises. Information you provide through an enquiry form may be used to respond to your request and coordinate follow-up.</p><p>We do not ask you to share sensitive personal information through this website. For questions about your information, please contact our team directly.</p></InfoPage> }
