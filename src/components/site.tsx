@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import {
@@ -39,8 +39,8 @@ export function Header() {
           <Image
             src="/logo.png"
             alt="Shree Balaji Enterprises"
-            width={200}
-            height={200}
+            width={240}
+            height={80}
             className="brand-logo"
           />
         </Link>
@@ -92,8 +92,8 @@ export function Footer() {
               <Image
                 src="/footer-logo-image.png"
                 alt="Shree Balaji Enterprises"
-                width={200}
-                height={200}
+                width={210}
+                height={140}
                 className="footer-logo"
               />
             </Link>
@@ -154,8 +154,8 @@ export function SectionIntro({
 const services = [
   {
     number: "01",
-    title: "Courier services",
-    desc: "Dependable parcel movement for personal and business requirements.",
+    title: "Courier Services",
+    desc: "Reliable parcel delivery solutions for individuals and businesses. We help coordinate shipments to destinations through suitable courier networks.",
     href: "/services",
     image: parcelImage,
   },
@@ -254,7 +254,7 @@ export function Process({
           if (idx !== -1) setActiveIndex(idx);
         });
       },
-      { rootMargin: "-50% 0px -50% 0px", threshold: 0 }
+      { rootMargin: "-50% 0px -50% 0px", threshold: 0 },
     );
     stepRefs.current.forEach((el) => el && observer.observe(el));
     return () => observer.disconnect();
@@ -355,7 +355,7 @@ export function PageHero({
   eyebrow: string;
   title: string;
   text: string;
-  image?: string;
+  image?: string | StaticImageData;
 }) {
   return (
     <section className="page-hero">

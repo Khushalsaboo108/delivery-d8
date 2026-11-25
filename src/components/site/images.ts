@@ -3,8 +3,23 @@
 // The keys correspond to logical usage throughout the site.
 
 export const images = {
+  // B2B Courier page hero image – fulfillment warehouse floor
+  b2bHero: "/b2b-image.jpeg",
+  // B2B Courier page – partnership/trust section
+  b2bTrust: "/best-services.jpeg",
+
+  // Cargo services page hero – container truck at a port terminal
+  cargoHero: "/cargo-image.jpeg",
+  // Cargo services page – warehouse/dispatch support image
+  cargoSupport: "/shipment.jpeg",
+
+  // Goods transportation page hero – multimodal network (road/rail/sea/air)
+  transportHero: "/image.jpeg",
+  // Goods transportation page – fleet support image
+  transportSupport: "/delivery-truck.jpeg",
+
   // Hero section – premium Indian cargo truck on highway
-  hero: "/images/hero-truck.jpg",
+  hero: "/hero.jpeg",
 
   // Black differentiation / dark section – logistics warehouse
   warehouse: "/images/warehouse.jpg",
@@ -22,7 +37,16 @@ export const images = {
   footerBg: "/images/footer-background.jpg",
 
   // Compatibility aliases (old keys)
-  cargo: "/images/cargo-truck-container.jpg",
+  cargo: "/cargo-image.jpeg",
   parcel: "/parcel-image.jpeg",
-  road: "/images/goods-transport-truck.jpg",
+  road: "/image.jpeg",
+
+  // Services page hero image – logistics warehouse loading
+  servicesHero: "/images/services-hero.jpg",
+
+  // Partner logos (official assets)
+  delhiveryLogo: "/images/partners/delhivery.png",
+  shreeMarutiLogo: "/images/partners/shree-maruti.png",
+  blueDartLogo: "/images/partners/bluedart.png",
+  xpressBeesLogo: "/images/partners/xpressbees.png",
 };

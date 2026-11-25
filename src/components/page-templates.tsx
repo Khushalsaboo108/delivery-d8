@@ -1,9 +1,163 @@
-import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
-import { ContactForm, FAQ, Footer, Header, PageHero, SectionIntro, ServicesGrid } from './site'
-import { images } from './site/images'
+import Link from "next/link";
 
-export function InfoPage({ title, eyebrow, text, image = images.hero, children }: { title:string; eyebrow:string; text:string; image?:string; children:React.ReactNode }) { return <><Header/><main><PageHero title={title} eyebrow={eyebrow} text={text} image={image}/><section className="page-section"><div className="container prose">{children}</div></section></main><Footer/></> }
-export function ServicePage({ title, eyebrow, text, image, intro, bullets }: { title:string; eyebrow:string; text:string; image:string; intro:string; bullets:string[] }) { return <><Header/><main><PageHero title={title} eyebrow={eyebrow} text={text} image={image}/><section className="page-section"><div className="container split-grid"><div className="prose"><SectionIntro eyebrow="A considered approach" title={intro}/><ul className="check-list">{bullets.map(b=><li key={b}><span className="service-number">●</span>{b}</li>)}</ul></div><div className="intro-note"><span>“</span><p>Share the details of your requirement with our team and we will help you plan the next step.</p><Link href="/contact" className="text-link">Make an enquiry <ArrowRight size={15}/></Link></div></div></section><section className="page-section" style={{background:'#f7f7f7'}}><div className="container narrow"><SectionIntro eyebrow="Questions" title="Let&apos;s make the details clear."/><FAQ/></div></section><section className="cta-section"><div className="container cta-inner"><p className="eyebrow">Start with a conversation</p><h2>Have a shipment in mind?</h2><p>Tell us what you need to move and where it needs to go.</p><Link href="/contact" className="button button-light">Request a quote <ArrowRight size={16}/></Link></div></section></main><Footer/></> }
-export function ServicesPage() { return <><Header/><main><PageHero eyebrow="What we do" title="Services that keep goods moving." text="Practical courier, cargo and transportation support for personal shipments and business requirements." image={images.cargo}/><section className="page-section" style={{background:'#f7f7f7'}}><div className="container"><SectionIntro eyebrow="Our services" title="Find the right place to start."/><ServicesGrid/></div></section></main><Footer/></> }
-export function ContactPage() { return <><Header/><main><PageHero eyebrow="Get in touch" title="Tell us what you need to move." text="Share a few details about your requirement. Our team in Jodhpur will help you understand the next step." image={images.parcel}/><section className="page-section"><div className="container split-grid"><div><SectionIntro eyebrow="Enquiries" title="A clear answer starts with a clear brief." text="Use the form for courier, B2B, cargo or transportation enquiries. You can also call or message us directly."/><div className="check-list"><p><b>Location</b><br/>Jodhpur, Rajasthan, India</p><p><b>Phone</b><br/><a className="text-link" href="tel:+919999999999">Call our team</a></p><p><b>Email</b><br/><a className="text-link" href="mailto:hello@shreebalajienterprises.in">Send an email</a></p></div></div><ContactForm/></div></section></main><Footer/></> }
+import { ArrowRight } from "lucide-react";
+import {
+  ContactForm,
+  PageHero,
+  SectionIntro,
+  ServicesGrid,
+} from "./site";
+import { images } from "./site/images";
+import Image from "next/image";
+import serviceHeorImage from "../../public/shipment.jpeg";
+import ServiceFinalCTA from "./shared/ServiceFinalCTA";
+
+export function InfoPage({
+  title,
+  eyebrow,
+  text,
+  image = images.hero,
+  children,
+}: {
+  title: string;
+  eyebrow: string;
+  text: string;
+  image?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <>
+      <main>
+        <PageHero title={title} eyebrow={eyebrow} text={text} image={image} />
+        <section className="page-section">
+          <div className="container prose">{children}</div>
+        </section>
+      </main>
+    </>
+  );
+}
+const serviceImage = serviceHeorImage;
+export function ServicesPage() {
+  return (
+    <>
+      <main>
+        {/* Services Hero */}
+        <PageHero
+          eyebrow="WHAT WE DO"
+          title="Services that keep goods moving."
+          text="We provide courier, cargo and transportation solutions for individuals and businesses. From everyday parcels to larger commercial consignments, we help coordinate shipments through suitable delivery networks across India and international destinations."
+          image={serviceImage}
+        />
+        {/* Services Overview */}
+        <section className="page-section" style={{ background: "#f7f7f7" }}>
+          <div className="container">
+            <SectionIntro
+              eyebrow="OUR SERVICES"
+              title="Find the right place to start."
+            />
+            <ServicesGrid />
+          </div>
+        </section>
+        {/* Find the Right Service */}
+        <section className="page-section">
+          <div className="container">
+            <SectionIntro
+              eyebrow="CHOOSE YOUR SERVICE"
+              title="The right solution starts with your shipment."
+              text="Every shipment has different requirements. Whether you're sending a single parcel, managing regular business consignments or moving larger cargo, we're here to understand your needs and help identify a suitable delivery solution."
+            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="service-choice p-4 border rounded">
+                <h3 className="font-bold">
+                  Personal parcel delivery – Courier Services
+                </h3>
+                <p>Ideal for individual shipments and small parcels.</p>
+              </div>
+              <div className="service-choice p-4 border rounded">
+                <h3 className="font-bold">
+                  Regular business shipments – B2B Courier
+                </h3>
+                <p>Optimized for ongoing business parcel needs.</p>
+              </div>
+              <div className="service-choice p-4 border rounded">
+                <h3 className="font-bold">
+                  Larger or heavier consignments – Cargo Services
+                </h3>
+                <p>Designed for bulk and heavy cargo handling.</p>
+              </div>
+              <div className="service-choice p-4 border rounded">
+                <h3 className="font-bold">
+                  Movement of commercial goods – Goods Transportation
+                </h3>
+                <p>
+                  Efficient transport for commercial goods between locations.
+                </p>
+              </div>
+            </div>
+            <div className="mt-6 text-center">
+              <Link href="/contact" className="button">
+                Not sure which service you need? Talk to us{" "}
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          </div>
+        </section>
+        <ServiceFinalCTA
+          eyebrow="Let's get your shipment moving"
+          title="Have a shipment in mind?"
+          text="Tell us what you need to send, where it needs to go, and we'll help you explore the right logistics solution."
+        />
+      </main>
+    </>
+  );
+}
+export function ContactPage() {
+  return (
+    <>
+      <main>
+        <PageHero
+          eyebrow="Get in touch"
+          title="Tell us what you need to move."
+          text="Share a few details about your requirement. Our team in Jodhpur will help you understand the next step."
+          image={images.parcel}
+        />
+        <section className="page-section">
+          <div className="container split-grid">
+            <div>
+              <SectionIntro
+                eyebrow="Enquiries"
+                title="A clear answer starts with a clear brief."
+                text="Use the form for courier, B2B, cargo or transportation enquiries. You can also call or message us directly."
+              />
+              <div className="check-list">
+                <p>
+                  <b>Location</b>
+                  <br />
+                  Jodhpur, Rajasthan, India
+                </p>
+                <p>
+                  <b>Phone</b>
+                  <br />
+                  <a className="text-link" href="tel:+919999999999">
+                    Call our team
+                  </a>
+                </p>
+                <p>
+                  <b>Email</b>
+                  <br />
+                  <a
+                    className="text-link"
+                    href="mailto:hello@shreebalajienterprises.in"
+                  >
+                    Send an email
+                  </a>
+                </p>
+              </div>
+            </div>
+            <ContactForm />
+          </div>
+        </section>
+      </main>
+    </>
+  );
+}

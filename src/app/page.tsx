@@ -12,6 +12,7 @@ import {
 } from "../components/site";
 import { images } from "../components/site/images";
 import { ServiceAreaMap } from "../components/service-area-map";
+import ServiceFinalCTA from "../components/shared/ServiceFinalCTA";
 import heroImage from "../../public/hero.jpeg";
 import whyBalajiImage from "../../public/why-balaji.jpeg";
 
@@ -21,7 +22,6 @@ const whyBalaji = whyBalajiImage;
 export default function Home() {
   return (
     <>
-      <Header />
       <main>
         <section className="hero">
           <div className="container hero-grid">
@@ -80,9 +80,6 @@ export default function Home() {
                 title="The dependable link in your supply chain."
                 text="Shree Balaji Enterprises helps people and businesses move goods with less friction. Based in Jodhpur, we bring a practical, responsive approach to courier, cargo and transportation requirements."
               />
-              <Link className="text-link large-link" href="/about">
-                More about our business <ArrowRight size={16} />
-              </Link>
             </div>
             <div className="intro-note">
               <span>“</span>
@@ -92,6 +89,9 @@ export default function Home() {
               </p>
               <small>— Shree Balaji Enterprises</small>
             </div>
+          <Link className="text-link mt-0" href="/about">
+            More about our business <ArrowRight size={16} />
+          </Link>
           </div>
         </section>
         <section className="section section-grey">
@@ -169,29 +169,12 @@ export default function Home() {
             <FAQ />
           </div>
         </section>
-        <section className="cta-section">
-          <div className="container cta-inner">
-            <p className="eyebrow">Ready when you are</p>
-            <h2>Looking for a reliable logistics partner in Jodhpur?</h2>
-            <p>
-              Connect with Shree Balaji Enterprises to discuss your courier,
-              cargo and transportation requirements.
-            </p>
-            <div className="hero-actions">
-              <Link href="/contact" className="button button-light">
-                Request a quote <ArrowRight size={16} />
-              </Link>
-              <a
-                href="tel:+919999999999"
-                className="button button-outline-light"
-              >
-                <Phone size={16} /> Call now
-              </a>
-            </div>
-          </div>
-        </section>
+        <ServiceFinalCTA
+          eyebrow="Ready when you are"
+          title="Looking for a reliable logistics partner in Jodhpur?"
+          text="Connect with Shree Balaji Enterprises to discuss your courier, cargo and transportation requirements."
+        />
       </main>
-      <Footer />
     </>
   );
 }

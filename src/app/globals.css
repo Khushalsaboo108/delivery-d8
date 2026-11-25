@@ -66,6 +66,12 @@ a {
     color: var(--red);
 }
 
+.brand-logo {
+    width: 150px;
+    height: auto;
+    display: block;
+}
+
 .brand-mark {
     width: 34px;
     height: 34px;
@@ -105,6 +111,7 @@ a {
     letter-spacing: .01em;
     transition: all .2s ease;
     cursor: pointer;
+    border-radius: 4px;
 }
 
 .button:hover {
@@ -207,6 +214,8 @@ h3 {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-visual,
@@ -311,12 +320,18 @@ h3 {
 .split-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 100px;
+    gap: 30px;
     align-items: center;
 }
 
 .section-intro {
-    margin-bottom: 45px;
+    margin-bottom: 15px;
+}
+
+@media (min-width: 768px) {
+    .section-intro {
+        margin-bottom: 40px;
+    }
 }
 
 .section-intro .lead {
@@ -538,7 +553,7 @@ h3 {
 }
 
 .process-scrolly-trigger {
-    height: 120vh;
+    height: 70vh;
 }
 
 .process-scrolly-copy {
@@ -725,6 +740,12 @@ h3 {
 
 .footer-brand {
     margin-bottom: 18px;
+}
+
+.footer-logo {
+    width: 140px;
+    height: auto;
+    display: block;
 }
 
 .footer-copy {
@@ -922,7 +943,7 @@ h3 {
     }
 
     .process-scrolly-trigger {
-        height: 90vh;
+        height: 60vh;
     }
 
     .trust-bar {
@@ -955,6 +976,10 @@ h3 {
 
     .brand {
         font-size: 12px;
+    }
+
+    .brand-logo {
+        width: 110px;
     }
 
     .brand-mark {
@@ -1029,6 +1054,128 @@ h3 {
 
     .intro-note p {
         font-size: 21px;
+    }
+}
+
+.preloader-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preloader-stage {
+    position: relative;
+    width: 100%;
+    max-width: 1450px;
+    height: min(62vh, 560px);
+    min-height: 260px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.preloader-panel {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: #ffffff;
+    z-index: 1;
+}
+
+.preloader-panel-top {
+    top: 0;
+}
+
+.preloader-panel-bottom {
+    bottom: 0;
+}
+
+.preloader-scene {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+}
+
+.preloader-pin-position {
+    position: absolute;
+    right: 9%;
+    top: 50%;
+    margin-top: -22px;
+}
+
+.preloader-pin {
+    position: relative;
+    width: 34px;
+    height: 44px;
+    animation: preloader-pin-float 1.8s ease-in-out infinite;
+}
+
+.preloader-pin-pulse {
+    position: absolute;
+    left: 50%;
+    bottom: 4px;
+    width: 34px;
+    height: 34px;
+    margin-left: -17px;
+    border-radius: 999px;
+    background: rgba(200, 16, 46, .35);
+    animation: preloader-pin-pulse 1.8s ease-out infinite;
+}
+
+@keyframes preloader-pin-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes preloader-pin-pulse {
+    0% {
+        transform: scale(.5);
+        opacity: .6;
+    }
+    100% {
+        transform: scale(2.2);
+        opacity: 0;
+    }
+}
+
+.preloader-truck-track {
+    position: absolute;
+    top: 50%;
+    width: min(220px, 18%);
+    transform: translateY(-50%);
+}
+
+.preloader-truck-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.preloader-truck-svg.is-driving .preloader-wheel {
+    animation: preloader-wheel-spin .5s linear infinite;
+}
+
+@keyframes preloader-wheel-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width:560px) {
+    .preloader-pin-position {
+        right: 6%;
+    }
+
+    .preloader-truck-track {
+        width: min(140px, 18%);
     }
 }
 
