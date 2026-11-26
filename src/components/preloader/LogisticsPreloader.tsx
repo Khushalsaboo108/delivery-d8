@@ -1,13 +1,40 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { animate, motion, useMotionValue, useTransform } from "framer-motion";
 import TruckIllustration from "./TruckIllustration";
 import LocationPin from "./LocationPin";
 
 const SESSION_KEY = "sbe-intro-shown";
+const DRIVE_DURATION = 2.2;
 
 type Phase = "idle" | "driving" | "paused" | "revealing" | "done";
+
+function LoadingStatus({ isDriving }: { isDriving: boolean }) {
+  const count = useMotionValue(1);
+  const label = useTransform(count, (value) => `${Math.round(value)}%`);
+  const width = useTransform(count, (value) => `${value}%`);
+
+  useEffect(() => {
+    if (!isDriving) return;
+    const controls = animate(count, 100, {
+      duration: DRIVE_DURATION,
+      ease: "easeOut",
+    });
+    return controls.stop;
+  }, [isDriving, count]);
+
+  return (
+    <div className="preloader-status">
+      <div className="preloader-counter">
+        <motion.span>{label}</motion.span>
+      </div>
+      <div className="preloader-progress-track">
+        <motion.div className="preloader-progress-fill" style={{ width }} />
+      </div>
+    </div>
+  );
+}
 
 export default function LogisticsPreloader() {
   const [phase, setPhase] = useState<Phase>("idle");
@@ -62,14 +89,16 @@ export default function LogisticsPreloader() {
           animate={{ opacity: isRevealing ? 0 : 1 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
         >
+          <div className="preloader-ambient-glow" aria-hidden="true" />
+
           <LocationPin className="preloader-pin-position" />
 
           <motion.div
             className="preloader-truck-track"
             initial={{ left: "-26%" }}
-            animate={{ left: ["-26%", "53%", "60%"] }}
+            animate={{ left: ["-26%", "62%", "69%"] }}
             transition={{
-              duration: 2.2,
+              duration: DRIVE_DURATION,
               times: [0, 0.82, 1],
               ease: ["circOut", "easeOut"],
             }}
@@ -91,6 +120,8 @@ export default function LogisticsPreloader() {
               <TruckIllustration isDriving={isDriving} className="preloader-truck-svg" />
             </motion.div>
           </motion.div>
+
+          <LoadingStatus isDriving={isDriving} />
         </motion.div>
 
         <motion.div
